@@ -1,0 +1,25 @@
+FROM blitznote/debootstrap-amd64:16.04
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        python \
+        python-pip \
+        python-setuptools \
+        python-dev \
+        libpython-dev \
+    && pip install --upgrade \
+        pip \
+        setuptools \
+        wheel \
+        awscli \
+    && apt-get remove --purge -y \
+        python-pip \
+        python-setuptools \
+        python-dev \
+        libpython-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+VOLUME /root/.aws
+
+VOLUME /data
+WORKDIR /data
