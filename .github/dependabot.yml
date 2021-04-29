@@ -1,0 +1,41 @@
+version: 2
+registries:
+  docker-registry-registry-hub-docker-com:
+    type: docker-registry
+    url: https://registry.hub.docker.com
+    username: sstc
+    password: "${{secrets.DOCKER_REGISTRY_REGISTRY_HUB_DOCKER_COM_PASSWORD}}"
+
+updates:
+- package-ecosystem: docker
+  directory: "/debian"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  registries:
+  - docker-registry-registry-hub-docker-com
+- package-ecosystem: docker
+  directory: "/alpine"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  registries:
+  - docker-registry-registry-hub-docker-com
+- package-ecosystem: docker
+  directory: "/ubuntu"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  registries:
+  - docker-registry-registry-hub-docker-com
+- package-ecosystem: docker
+  directory: "/alpine-python2"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  registries:
+  - docker-registry-registry-hub-docker-com
